@@ -14,9 +14,7 @@ This document contains brief summary about the Iris flow data set and its usage,
 
 ·   Iris virginica. 
 
- ![] ()
-
- 		The data set presents 150 samples of flowers (50 for each plant), featuring four attributes (data **features**):
+ The data set presents 150 samples of flowers (50 for each plant), featuring four attributes (data **features**):
 
 ·   Sepal length
 
