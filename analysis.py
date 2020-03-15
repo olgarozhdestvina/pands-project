@@ -28,36 +28,39 @@ virginica = grouped.get_group("Iris-virginica")
 virginica.name = "Iris Virginica"
 
 
-
 def summ(species):
     count = species.count()   # Computing count of group
     mean = species.mean()     # Computing mean of groups
     median = species.median() # Computing median of groups
     std = species.std()       # Computing standard deviation of groups
     mad = species.mad()       # Returning the mean absolute deviation of the values
-    corr = species.corr()     # Computing pairwise correlation of columns
     var = species.var()       # Computing variance of groups
-    cov = species.cov()       # Computing pairwise covariance of columns
     mx = species.max()        # Computing max of group values
     mn = species.min()        # Computing min of group values
     # Computations and their description taken from https://pandas.pydata.org/pandas-docs/stable/reference/groupby.html
 
+    # adding space to structure output, rounding computations to 2 decimal places
+    # information on spacing was adapted from https://pyformat.info/
 
-# evaluate to an iterable (adapted from https://dimitrisjim.github.io/python-unpackings-unpacked.html)
+    space = "\t\t\t  {:^20}{:^15}{:^15}{:^15}"
+    specs_space = '{:30}{:^15.2f}{:^15.2f}{:^15.2f}{:^15.2f}'
+
+    # evaluate to an iterable (adapted from https://dimitrisjim.github.io/python-unpackings-unpacked.html)
+    print("\n")
     print(species.name)
-    print(*column_names)
-    print("Count", *count.values)
-    print("Mean", *mean.values)
-    print("Median", *median.values)
-    print("Standard Deviation", *std.values)
-    print("Mean Absolute Deviation", *mad.values)
-    print("Pairwise Correlation", *corr.values)
-    print("Variance", *var.values)
-    print("Coefficient of Variation", *cov.values)    
-    print("Min", *mn.values)
-    print("Max", *mx.values)
+    print(space.format(*column_names))
+    print(specs_space.format("Count", *count.values))
+    print(specs_space.format("Mean", *mean.values))
+    print(specs_space.format("Median", *median.values))
+    print(specs_space.format("Standard Deviation", *std.values))
+    print(specs_space.format("Mean Absolute Deviation", *mad.values))
+    print(specs_space.format("Variance", *var.values))  
+    print(specs_space.format("Min", *mn.values))
+    print(specs_space.format("Max", *mx.values))
     species.describe()
-    
+
+# print the summary for each species 
+ 
 summ(setosa)
 summ(vesticolor)
 summ(virginica)

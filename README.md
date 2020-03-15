@@ -8,10 +8,17 @@ This document contains the Project 2020 for Programming and Scripting Module at 
 
 *Programming Language used:* [Python](https://www.python.org/)
 
+------
 
+## Table of Contents
 
-[TOC]
-
+* [Fisher's Iris Data Set](https://github.com/olgarozhdestvina/pands-problems-2020/blob/master/Problem%20Set#fisher's-iris-data-set)
+			* [About the Data Set](https://github.com/olgarozhdestvina/pands-problems-2020/blob/master/Problem%20Set#about-the-data-set)
+			* [Use of the Set](https://github.com/olgarozhdestvina/pands-problems-2020/blob/master/Problem%20Set#use-of-the-set)
+* [Set up](https://github.com/olgarozhdestvina/pands-problems-2020/blob/master/Problem%20Set#set-up)
+* [How to run the code](https://github.com/olgarozhdestvina/pands-problems-2020/blob/master/Problem%20Set#how-to-run-the-code)
+* [License](https://github.com/olgarozhdestvina/pands-problems-2020/blob/master/Problem%20Set#license)
+* [Acknowledgment](https://github.com/olgarozhdestvina/pands-problems-2020/blob/master/Problem%20Set#acknowledgment)
 
 
 ### Fisher's Iris Data Set
@@ -26,9 +33,9 @@ This document contains the Project 2020 for Programming and Scripting Module at 
 
 ·   Iris virginica. 
 
- ![] ()
+ ![] (https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/iris-species.png)
 
- 		The data set presents 150 samples of flowers (50 for each plant), featuring four attributes (data **features**):
+ The data set presents 150 samples of flowers (50 for each plant), featuring four attributes (data **features**):
 
 ·   Sepal length
 
@@ -77,7 +84,7 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 
 ------
 
-#### Acknowledgments
+#### Acknowledgment
 
 - Lecturers of GMIT for this module: Ian McLoughlin and Andrew Beatty 
 - https://stackoverflow.com/
