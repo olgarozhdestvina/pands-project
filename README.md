@@ -1,10 +1,22 @@
-This document contains brief summary about the Iris flow data set and its usage,  
+# Programming and Scripting Project
+
+This document contains the Project 2020 for Programming and Scripting Module at GMIT. 
+
+*Submitted by:* Olga Rozhdestvina (Student No: G00387844) 
+
+*Lecturers:* Ian McLoughlin, Andrew Beatty 
+
+*Programming Language used:* [Python](https://www.python.org/)
+
+
+
+[TOC]
 
 
 
 ### Fisher's Iris Data Set
 
-##### __**About the Data Set**__
+##### About the Data Set
 
 ​		The Iris flower data set* or *Fisher’s Iris data set* was presented in1936 as an example for linear discriminant analysis in the work of British statistician and geneticist Sir Ronald Aylmer Fisher, titled __*“The use of multiple measurements in taxonomic problems”*__. However, sometimes it is called *Anderson's Iris data set*  as the data itself originated in research by Edgar Anderson, who studied morphologic variations in Iris flowers of three related species: 
 
@@ -14,7 +26,9 @@ This document contains brief summary about the Iris flow data set and its usage,
 
 ·   Iris virginica. 
 
- The data set presents 150 samples of flowers (50 for each plant), featuring four attributes (data **features**):
+ ![] ()
+
+ 		The data set presents 150 samples of flowers (50 for each plant), featuring four attributes (data **features**):
 
 ·   Sepal length
 
@@ -28,7 +42,7 @@ all four measured in centimetres. Additionally, the species was recorded for eac
 
  
 
-##### **Use of the Set**
+##### Use of the Set
 
 ​		The Iris flower data set is famous among pattern recognition scientists and statisticians, and has been referenced to illustrate a variety of techniques, for instance, in machine learning, multivariate statistics, data mining, pattern recognition etc. Moreover, it is frequently offered as a standard example data set in various software and other sources, and so has an important contribution not only to science, but also to teaching machine learning. 
 
@@ -36,7 +50,7 @@ all four measured in centimetres. Additionally, the species was recorded for eac
 
 
 
-### **Set up**
+### Set up
 
 The raw data was taken from  [UC Irvine Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/iris). 
 
