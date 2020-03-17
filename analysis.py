@@ -9,59 +9,48 @@ import pandas as pd # for data analysis and manupulation
 import numpy as np # for plotting
 import seaborn as sns # for plotting
 import matplotlib.pyplot as plt # for plotting
-
-# making a list of column names for the future table
-column_names = ["Sepal Length", "Sepal Width", "Petal Length", "Petal Width"]
+from tabulate import tabulate # for outputting a summary into a table
 
 #importing iris data set, unpaking values of column_names into it as well
-raw_data = pd.read_csv('iris.data.txt', header=None, names = [*column_names, "Species"])
+raw_data = pd.read_csv('iris.data.txt', names = ["Sepal Length", "Sepal Width", "Petal Length", "Petal Width", "Species"])
 
-# grouping raw data by species
-grouped = raw_data.groupby(["Species"])
-
-# constructing each iris species from grouped raw data 
-setosa = grouped.get_group("Iris-setosa")
-setosa.name = "Iris Setosa" # applying name attribute 
-vesticolor = grouped.get_group("Iris-versicolor")
-vesticolor.name = "Iris Vesticolor"
-virginica = grouped.get_group("Iris-virginica")
-virginica.name = "Iris Virginica"
-
+# splitting iris species from the raw_data 
+# adapted from https://www.kaggle.com/willvegapunk/iris-data-set
+setosa = raw_data[raw_data.Species =="Iris-setosa"]
+vesticolor = raw_data[raw_data.Species =="Iris-versicolor"]
+virginica = raw_data[raw_data.Species =="Iris-virginica"]
 
 def summ(species):
-    count = species.count()   # Computing count of group
-    mean = species.mean()     # Computing mean of groups
-    median = species.median() # Computing median of groups
-    std = species.std()       # Computing standard deviation of groups
-    mad = species.mad()       # Returning the mean absolute deviation of the values
-    var = species.var()       # Computing variance of groups
-    mx = species.max()        # Computing max of group values
-    mn = species.min()        # Computing min of group values
+    species.count()  # Computing count of group
+    species.mean()   # Computing mean of groups
+    species.median() # Computing median of groups
+    species.std()    # Computing standard deviation of groups
+    species.mad()    # Returning the mean absolute deviation of the values
+    species.var()    # Computing variance of groups
+    species.max()    # Computing max of group values
+    species.min()    # Computing min of group values
     # Computations and their description taken from https://pandas.pydata.org/pandas-docs/stable/reference/groupby.html
+    return species.describe()
 
-    # adding space to structure output, rounding computations to 2 decimal places
-    # information on spacing was adapted from https://pyformat.info/
+# information on tabulates was used from https://pypi.org/project/tabulate/
+# save the summary for each species into a text file
 
-    space = "\t\t\t  {:^20}{:^15}{:^15}{:^15}"
-    specs_space = '{:30}{:^15.2f}{:^15.2f}{:^15.2f}{:^15.2f}'
+table = summ(setosa)
+with open("Summary.txt", "w") as f: # write into a file
+    f.write("<<< Summary for each species of Iris >>> \n\n")    
+    #add a table for Setosa
+    f.write("\t\t\t\t Iris Setosa \n")
+    f.write(tabulate(table, tablefmt="psql", headers = "keys"))
 
-    # evaluate to an iterable (adapted from https://dimitrisjim.github.io/python-unpackings-unpacked.html)
-    print("\n")
-    print(species.name)
-    print(space.format(*column_names))
-    print(specs_space.format("Count", *count.values))
-    print(specs_space.format("Mean", *mean.values))
-    print(specs_space.format("Median", *median.values))
-    print(specs_space.format("Standard Deviation", *std.values))
-    print(specs_space.format("Mean Absolute Deviation", *mad.values))
-    print(specs_space.format("Variance", *var.values))  
-    print(specs_space.format("Min", *mn.values))
-    print(specs_space.format("Max", *mx.values))
-    species.describe()
+table = summ(vesticolor)
+with open("Summary.txt", "a") as f: # append to the same file
+    #add a table for Vesticolor
+    f.write("\n\n\t\t\t\t Iris Vesticolor \n ")
+    f.write(tabulate(table, tablefmt="psql", headers = "keys"))
 
-# print the summary for each species 
- 
-summ(setosa)
-summ(vesticolor)
-summ(virginica)
 
+table = summ(virginica)
+with open("Summary.txt", "a") as f:
+    #add a table for Virginica
+    f.write("\n\n\t\t\t\t Iris Virginica \n")
+    f.write(tabulate(table, tablefmt="psql", headers = "keys"))
