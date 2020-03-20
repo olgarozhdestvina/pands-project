@@ -13,8 +13,8 @@ This document contains the Project 2020 for Programming and Scripting Module at 
 ## Table of Contents
 
 * [Fisher's Iris Data Set](https://github.com/olgarozhdestvina/pands-project/blob/master#fisher's-iris-data-set)
-			* [About the Data Set](https://github.com/olgarozhdestvina/pands-project/blob/master#about-the-data-set)
-			* [Use of the Set](https://github.com/olgarozhdestvina/pands-project/blob/master#use-of-the-set)
+* [About the Data Set](https://github.com/olgarozhdestvina/pands-project/blob/master#about-the-data-set)
+* [Use of the Set](https://github.com/olgarozhdestvina/pands-project/blob/master#use-of-the-set)
 * [Set up](https://github.com/olgarozhdestvina/pands-project/blob/master#set-up)
 * [How to run the code](https://github.com/olgarozhdestvina/pands-project/blob/master#how-to-run-the-code)
 * [Analysing the Set](https://github.com/olgarozhdestvina/pands-project/blob/master#analysing-the-set)
@@ -34,7 +34,7 @@ This document contains the Project 2020 for Programming and Scripting Module at 
 
 ·   Iris virginica. 
 
- ![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Output%20Images/iris-species.jpg)
+  ![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Used%20Images/iris-species.jpg)
 
  The data set presents 150 samples of flowers (50 for each plant), featuring four attributes (data **features**):
 
@@ -87,7 +87,7 @@ The purpose of the program analysis.py is to complete three tasks on anasysing t
 
 The program has a multiple choice menu which allows selecting between viewing the text file with a summary, viewing the histogram or viewing the scatter plot. 
 
- ![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Output%20Images/menu.jpg)
+ ![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Used%20Images/menu.jpg)
 
 Please note that all three files will be automatically saved to your PC.
 
