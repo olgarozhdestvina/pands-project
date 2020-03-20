@@ -17,6 +17,7 @@ This document contains the Project 2020 for Programming and Scripting Module at 
 			* [Use of the Set](https://github.com/olgarozhdestvina/pands-project/blob/master#use-of-the-set)
 * [Set up](https://github.com/olgarozhdestvina/pands-project/blob/master#set-up)
 * [How to run the code](https://github.com/olgarozhdestvina/pands-project/blob/master#how-to-run-the-code)
+* [Analysing the Set](https://github.com/olgarozhdestvina/pands-project/blob/master#analysing-the-set)
 * [License](https://github.com/olgarozhdestvina/pands-project/blob/master#license)
 * [Acknowledgment](https://github.com/olgarozhdestvina/pands-project/blob/master#acknowledgment)
 
@@ -33,7 +34,7 @@ This document contains the Project 2020 for Programming and Scripting Module at 
 
 ·   Iris virginica. 
 
- ![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/iris-species.jpg)
+ ![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Output%20Images/iris-species.jpg)
 
  The data set presents 150 samples of flowers (50 for each plant), featuring four attributes (data **features**):
 
@@ -63,7 +64,7 @@ The raw data was taken from  [UC Irvine Machine Learning Repository](https://arc
 
 Programs used for completion of this project are: [Visual Studio Code](https://code.visualstudio.com/), [cmder](http://cmder.net/)
 
-Libraries used for the project are: [numpy](https://numpy.org/), [pandas](https://pandas.pydata.org/), [matplotlib](https://matplotlib.org/) and [seaborn](https://seaborn.pydata.org/). All of these are installed with the [Anaconda Python distribution](https://www.anaconda.com/). 
+Libraries used for the project are: [numpy](https://numpy.org/), [tabulate](https://pypi.org/project/tabulate/), [pandas](https://pandas.pydata.org/), [matplotlib](https://matplotlib.org/) and [seaborn](https://seaborn.pydata.org/). All of these are installed with the [Anaconda Python distribution](https://www.anaconda.com/). 
 
  
 
@@ -76,13 +77,27 @@ Libraries used for the project are: [numpy](https://numpy.org/), [pandas](https:
 
 ------
 
+### Analysing the Set
 
+The purpose of the program analysis.py is to complete three tasks on anasysing the Iris Data Set: 
+
+1. to output a summary of each Iris species to a single text ﬁle.
+2. to save a histogram of each variable to png ﬁles.
+3. to save a scatter plot of each pair of variables to png files.
+
+The program has a multiple choice menu which allows selecting between viewing the text file with a summary, viewing the histogram or viewing the scatter plot. 
+
+ ![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Output%20Images/menu.jpg)
+
+Please note that all three files will be automatically saved to your PC.
+
+------
 
 #### License
 
 This project is licensed under the MIT License - see the LICENSE.md file for details
 
-------
+
 
 #### Acknowledgment
 
