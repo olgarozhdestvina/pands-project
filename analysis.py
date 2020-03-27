@@ -13,7 +13,6 @@ import seaborn as sns                 # for plotting
 import matplotlib.pyplot as plt       # for plotting
 import os                             # for viewing files
 
-
 # importing the iris data set
 try:
     # assigning names to the columns
@@ -29,11 +28,13 @@ species = raw_data.Species
 setosa = raw_data[species =="Iris-setosa"]
 setosa.name = "Iris Setosa" # adding a name attribute 
 
-vesticolor = raw_data[species =="Iris-versicolor"]
-vesticolor.name = "Iris Vesticolor"
+versicolor = raw_data[species =="Iris-versicolor"]
+versicolor.name = "Iris Versicolor"
 
 virginica = raw_data[species =="Iris-virginica"]
 virginica.name = "Iris Virginica"
+
+
 
 # PART 1
 # defining a function that ouputs a summary for each species to a single text ﬁle
@@ -51,7 +52,8 @@ def summ(species):
 
     # defining table content from the data set and the values of above computations
     TABLE_DATA = {"Summary":
-        [["Count", *count],                 
+    [   
+        ["Count", *count],                 
         ["Mean", *mean],                   
         ["Median", *median],               
         ["Standard Deviation", *std],      
@@ -86,6 +88,38 @@ def summ(species):
 
 
 
+# PART 2
+# defining a function that saves a histogram of each variable to png ﬁles
+
+def irisHistogram(setosa, versicolor, virginica, stat):
+    # setting seaborn aesthetic parametes 
+    sns.set(palette="dark", style="darkgrid", context="paper")
+    # assigning a title and ylabel
+    plt.title("Iris data set comparison of {}".format(stat), fontweight="bold", fontsize="12", color="navy")
+    plt.ylabel("Frequency")
+    # using seaborn distplot for histogram projection
+    # adopted from https://jakevdp.github.io/PythonDataScienceHandbook/04.14-visualization-with-seaborn.html
+    sns.distplot(setosa[stat], label="Iris Setosa")
+    sns.distplot(versicolor[stat], label="Iris Versicolor")
+    sns.distplot(virginica[stat], label="Iris Virginia")
+    plt.legend()
+    # saving a figure as a png file
+    plt.savefig("{}.png".format(stat))
+    # showing the histogram
+    plt.show()
+
+
+
+# PART 3
+# defining a function that outputs a scatter plot of each pair of variables to png files
+
+
+
+
+
+
+
+
 
 
 # creating a menu for the program
@@ -108,21 +142,24 @@ def viewTextFile():
     with open("Summary.txt", "w"):
         # calling the summary function
         summ(setosa) 
-        summ(vesticolor)
+        summ(versicolor)
         summ(virginica)
         # opening the file in notepad  
         file = "notepad.exe Summary.txt"
         os.system(file)
     
-def viewHisogram():
-    print("due")
+def viewHistogram():  
+    irisHistogram(setosa, versicolor, virginica, "Sepal Length")
+    irisHistogram(setosa, versicolor, virginica, "Sepal Width")
+    irisHistogram(setosa, versicolor, virginica, "Petal Length")
+    irisHistogram(setosa, versicolor, virginica, "Petal Width")
 
 def viewScatterPlot():
     print("due")
 
 choicemap = {
     "a": viewTextFile,
-    "b": viewHisogram,
+    "b": viewHistogram,
     "c": viewScatterPlot,
     "q": quit
 } 
