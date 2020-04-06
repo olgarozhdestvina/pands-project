@@ -89,7 +89,7 @@ The program has a multiple choice menu which allows selecting between viewing th
 
  ![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Used%20Images/menu.jpg)
 
-Please note that all three files will be automatically saved to your PC.
+Please note that all files will be automatically saved to your PC.
 
 ------
 

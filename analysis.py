@@ -38,7 +38,7 @@ virginica.name = "Iris Virginica"
 
 # PART 1
 # defining a function that ouputs a summary for each species to a single text ﬁle
-def summ(species):
+def irisSumm(species):
 
     # Computations and their description taken from https://pandas.pydata.org/pandas-docs/stable/reference/groupby.html 
     count = species.count()                     # Computing count of group
@@ -103,8 +103,19 @@ def irisHistogram(setosa, versicolor, virginica, stat):
     sns.distplot(versicolor[stat], label="Iris Versicolor")
     sns.distplot(virginica[stat], label="Iris Virginia")
     plt.legend()
-    # saving a figure as a png file
-    plt.savefig("{}.png".format(stat))
+
+    # saving a histogram as a png file into a folder
+    # adapted from https://stackoverflow.com/questions/11373610/save-matplotlib-file-to-a-directory
+    my_path = os.path.dirname(__file__) 
+    # giving a path for saving a file
+    my_folder = os.path.join(my_path, "Iris Histograms/")
+    # If the directory does not exist, create it
+    if not os.path.isdir(my_folder):
+        os.makedirs(my_folder)
+    # assigning a name to a file
+    my_file = "{}.png".format(stat)
+    # saving a figure 
+    plt.savefig(my_folder + my_file)     
     # showing the histogram
     plt.show()
 
@@ -113,13 +124,44 @@ def irisHistogram(setosa, versicolor, virginica, stat):
 # PART 3
 # defining a function that outputs a scatter plot of each pair of variables to png files
 
+def irisScatterPlot(setosa, versicolor, virginica, stat1, stat2):
+    # setting seaborn aesthetic parametes 
+    sns.set(palette="dark", style="darkgrid", context="paper")
+    # assigning a title
+    plt.title(stat1 + " vs " + stat2)
+    # segregating data for future plot labels and vectors
+    x = setosa[stat1]
+    y = setosa[stat2]
+    x2 = versicolor[stat1]
+    y2 = versicolor[stat2]
+    x3 = virginica[stat1]
+    y3 = virginica[stat2]
 
+    # drawing a scatter plot
+    # adopted from https://seaborn.pydata.org/generated/seaborn.scatterplot.html
+    cmap = sns.cubehelix_palette(dark=.2, light=.9, as_cmap=True)
+    g = sns.scatterplot(x, y, hue=x, size=y, sizes=(30, 200), hue_norm=(0,10), style=species, palette=cmap)
+    g.legend(title="Species")
 
+    cmap = sns.cubehelix_palette(start=2.8, rot=-.4, as_cmap=True)
+    sns.scatterplot(x2, y2, hue=x2, size=y2, sizes=(30, 200), hue_norm=(0,10), style=species, palette=cmap)
 
+    cmap = sns.cubehelix_palette(rot=-.1, dark=.2, light=.9, as_cmap=True)
+    sns.scatterplot(x3, y3, hue=x3, size=y3, sizes=(30, 200), hue_norm=(0,10), style=species, palette=cmap)
 
-
-
-
+    # saving a scatter plot as a png file into a folder
+    my_path = os.path.dirname(__file__) 
+    # giving a path for saving a file
+    my_folder = os.path.join(my_path, "Iris Scatter Plots/")
+    # If the directory does not exist, create it
+    if not os.path.isdir(my_folder):
+        os.makedirs(my_folder)
+    # assigning a name to a file
+    my_file = "{} vs {}.png".format(stat1, stat2)
+    # saving a figure 
+    plt.savefig(my_folder + my_file) 
+    # showing the scatter plot
+    plt.show()
 
 
 # creating a menu for the program
@@ -141,9 +183,9 @@ def viewTextFile():
     # opening the file in write mode
     with open("Summary.txt", "w"):
         # calling the summary function
-        summ(setosa) 
-        summ(versicolor)
-        summ(virginica)
+        irisSumm(setosa) 
+        irisSumm(versicolor)
+        irisSumm(virginica)
         # opening the file in notepad  
         file = "notepad.exe Summary.txt"
         os.system(file)
@@ -155,7 +197,17 @@ def viewHistogram():
     irisHistogram(setosa, versicolor, virginica, "Petal Width")
 
 def viewScatterPlot():
-    print("due")
+    irisScatterPlot(setosa, versicolor, virginica, "Sepal Length", "Sepal Width")
+    irisScatterPlot(setosa, versicolor, virginica, "Petal Length", "Petal Width")
+    irisScatterPlot(setosa, versicolor, virginica, "Sepal Length", "Petal Length")
+    irisScatterPlot(setosa, versicolor, virginica, "Sepal Length", "Petal Width")
+    irisScatterPlot(setosa, versicolor, virginica, "Sepal Width", "Petal Length")
+    irisScatterPlot(setosa, versicolor, virginica, "Sepal Width", "Petal Width")
+
+
+
+
+
 
 choicemap = {
     "a": viewTextFile,
@@ -170,4 +222,4 @@ while choice != "q":
         choicemap[choice] ()
     else: 
         print("\n\n Please select either a, b, c, q!")
-    choice = menu()
+    choice = input("\nType one letter (a/b/c/q): ").strip()
