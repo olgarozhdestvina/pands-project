@@ -64,7 +64,7 @@ The raw data was taken from  [UC Irvine Machine Learning Repository](https://arc
 
 Programs used for completion of this project are: [Visual Studio Code](https://code.visualstudio.com/), [cmder](http://cmder.net/)
 
-Libraries used for the project are: [numpy](https://numpy.org/), [tabulate](https://pypi.org/project/tabulate/), [pandas](https://pandas.pydata.org/), [matplotlib](https://matplotlib.org/) and [seaborn](https://seaborn.pydata.org/). All of these are installed with the [Anaconda Python distribution](https://www.anaconda.com/). 
+Libraries used for the project are: [tabulate](https://pypi.org/project/tabulate/), [pandas](https://pandas.pydata.org/), [matplotlib](https://matplotlib.org/), [matplotlib.lines](https://matplotlib.org/api/lines_api.html), [seaborn](https://seaborn.pydata.org/) and [os](https://docs.python.org/3/library/os.html). All of these are installed with the [Anaconda Python distribution](https://www.anaconda.com/). 
 
  
 
