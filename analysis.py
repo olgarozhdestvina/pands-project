@@ -7,11 +7,11 @@
 # importing libraries
 
 import pandas as pd                   # for data analysis and manupulation
-from tabulate import tabulate         # for creating a table
-import numpy as np                    # for plotting
+from tabulate import tabulate         # for creating a table in the summary
 import seaborn as sns                 # for plotting
 import matplotlib.pyplot as plt       # for plotting
 import os                             # for viewing files
+import matplotlib.lines as mlines     # for a legend in scatterplot
 
 # importing the iris data set
 try:
@@ -20,6 +20,9 @@ try:
 except FileNotFoundError:
     # in case text file with the data set is not found
     print("Iris.data.txt is not found. Please download it from https://archive.ics.uci.edu/ml/datasets/iris")
+# in case of any other error
+except Exception as e:
+    print("ERROR: ", e)
 
 # splitting iris species from the raw_data 
 # adapted from https://www.kaggle.com/willvegapunk/iris-data-set
@@ -38,6 +41,7 @@ virginica.name = "Iris Virginica"
 
 # PART 1
 # defining a function that ouputs a summary for each species to a single text ﬁle
+
 def irisSumm(species):
 
     # Computations and their description taken from https://pandas.pydata.org/pandas-docs/stable/reference/groupby.html 
@@ -92,17 +96,20 @@ def irisSumm(species):
 # defining a function that saves a histogram of each variable to png ﬁles
 
 def irisHistogram(setosa, versicolor, virginica, stat):
-    # setting seaborn aesthetic parametes 
-    sns.set(palette="dark", style="darkgrid", context="paper")
+    # setting seaborn aesthetic parametes, information used from https://seaborn.pydata.org/tutorial/aesthetics.html
+    sns.set(palette="dark", style="darkgrid", context="paper", font_scale=1.25)
+    # defining a size of the figure
+    plt.subplots(figsize=(12,7))
     # assigning a title and ylabel
-    plt.title("Iris data set comparison of {}".format(stat), fontweight="bold", fontsize="12", color="navy")
+    plt.title("Iris data set comparison of {}".format(stat), fontweight="bold", fontsize=15, color="navy")
     plt.ylabel("Frequency")
     # using seaborn distplot for histogram projection
     # adopted from https://jakevdp.github.io/PythonDataScienceHandbook/04.14-visualization-with-seaborn.html
     sns.distplot(setosa[stat], label="Iris Setosa")
     sns.distplot(versicolor[stat], label="Iris Versicolor")
     sns.distplot(virginica[stat], label="Iris Virginia")
-    plt.legend()
+    # changing the font size of the legend and displaying it
+    plt.legend(title="Species")
 
     # saving a histogram as a png file into a folder
     # adapted from https://stackoverflow.com/questions/11373610/save-matplotlib-file-to-a-directory
@@ -125,10 +132,6 @@ def irisHistogram(setosa, versicolor, virginica, stat):
 # defining a function that outputs a scatter plot of each pair of variables to png files
 
 def irisScatterPlot(setosa, versicolor, virginica, stat1, stat2):
-    # setting seaborn aesthetic parametes 
-    sns.set(palette="dark", style="darkgrid", context="paper")
-    # assigning a title
-    plt.title(stat1 + " vs " + stat2)
     # segregating data for future plot labels and vectors
     x = setosa[stat1]
     y = setosa[stat2]
@@ -137,17 +140,34 @@ def irisScatterPlot(setosa, versicolor, virginica, stat1, stat2):
     x3 = virginica[stat1]
     y3 = virginica[stat2]
 
-    # drawing a scatter plot
+    # setting seaborn aesthetic parametes 
+    sns.set(palette="dark", style="darkgrid", context="paper", font_scale=1.25)
+
+    # defining a size of the figure
+    plt.subplots(figsize=(13,8))
+
+    # drawing a scatter plot for each species
     # adopted from https://seaborn.pydata.org/generated/seaborn.scatterplot.html
+    # customising a palette for each plot
     cmap = sns.cubehelix_palette(dark=.2, light=.9, as_cmap=True)
-    g = sns.scatterplot(x, y, hue=x, size=y, sizes=(30, 200), hue_norm=(0,10), style=species, palette=cmap)
-    g.legend(title="Species")
-
+    sns.scatterplot(x, y, hue=x, size=y, sizes=(30, 500), hue_norm=(0,11), style=species, palette=cmap)
+    
     cmap = sns.cubehelix_palette(start=2.8, rot=-.4, as_cmap=True)
-    sns.scatterplot(x2, y2, hue=x2, size=y2, sizes=(30, 200), hue_norm=(0,10), style=species, palette=cmap)
-
-    cmap = sns.cubehelix_palette(rot=-.1, dark=.2, light=.9, as_cmap=True)
-    sns.scatterplot(x3, y3, hue=x3, size=y3, sizes=(30, 200), hue_norm=(0,10), style=species, palette=cmap)
+    sns.scatterplot(x2, y2, hue=x2, size=y2, sizes=(30, 500), hue_norm=(0,11), style=species, palette=cmap)
+    
+    cmap = sns.cubehelix_palette(rot=-.1, dark=.2, light=.9, as_cmap=True)  
+    sns.scatterplot(x3, y3, hue=x3, size=y3, sizes=(30, 500), hue_norm=(0,11), style=species, palette=cmap)
+    
+    # assigning a title
+    plt.title(stat1 + " Vs " + stat2, fontweight="bold", fontsize=15, color="DarkSlateGray")
+    # drawing future handles for the legend
+    # information used from https://matplotlib.org/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D
+    s = mlines.Line2D([],[], color="PaleVioletRed", label="Setosa", linestyle="", markeredgecolor="white", marker="o", markersize=10)
+    ver = mlines.Line2D([],[], color="SeaGreen", label="Versicolor", linestyle="", markeredgecolor="white", marker="X", markersize=10)
+    vir = mlines.Line2D([],[], color="SteelBlue", label="Virginica", linestyle="", markeredgecolor="white", marker="s", markersize=10)
+    # overwriting the legend to remove size labels 
+    # adapted from https://matplotlib.org/tutorials/intermediate/legend_guide.html 
+    plt.legend(title="Species", handles=[s, ver, vir], fontsize=12, loc="upper left", fancybox=True, shadow=True)
 
     # saving a scatter plot as a png file into a folder
     my_path = os.path.dirname(__file__) 
@@ -163,13 +183,13 @@ def irisScatterPlot(setosa, versicolor, virginica, stat1, stat2):
     # showing the scatter plot
     plt.show()
 
-
+# PART 4
 # creating a menu for the program
 # adapted from Topic 6 on functions (GMIT)
 # https://github.com/olgarozhdestvina/pands-problems-2020/tree/master/Labs/Topic06-functions
 
 def menu():
-    print("\nWelcome to the Fisher's Iris Data Set!\n")
+    print("\n Welcome to the Fisher's Iris Data Set!\n")
     print("Please choose one of the following:\n")
     print("\t (a) To view a summary of each Iris Species in a text file.")
     print("\t (b) To view a histogram of each Iris Species")
@@ -186,17 +206,21 @@ def viewTextFile():
         irisSumm(setosa) 
         irisSumm(versicolor)
         irisSumm(virginica)
-        # opening the file in notepad  
+        # opening the file in the notepad  
         file = "notepad.exe Summary.txt"
         os.system(file)
-    
-def viewHistogram():  
+
+# defining function for choice (b)    
+def viewHistogram():
+    # calling the histogram function
     irisHistogram(setosa, versicolor, virginica, "Sepal Length")
     irisHistogram(setosa, versicolor, virginica, "Sepal Width")
     irisHistogram(setosa, versicolor, virginica, "Petal Length")
     irisHistogram(setosa, versicolor, virginica, "Petal Width")
 
+# defining function for choice (c)
 def viewScatterPlot():
+    # calling the scatter plot function
     irisScatterPlot(setosa, versicolor, virginica, "Sepal Length", "Sepal Width")
     irisScatterPlot(setosa, versicolor, virginica, "Petal Length", "Petal Width")
     irisScatterPlot(setosa, versicolor, virginica, "Sepal Length", "Petal Length")
@@ -204,11 +228,7 @@ def viewScatterPlot():
     irisScatterPlot(setosa, versicolor, virginica, "Sepal Width", "Petal Length")
     irisScatterPlot(setosa, versicolor, virginica, "Sepal Width", "Petal Width")
 
-
-
-
-
-
+# setting a choicemap of 4 choices and connecting each to the correct function
 choicemap = {
     "a": viewTextFile,
     "b": viewHistogram,
@@ -216,10 +236,14 @@ choicemap = {
     "q": quit
 } 
 
+# requesting an input from a user
 choice = menu()
 while choice != "q":
+    # if the choice is (a), (b) or (c)
     if choice in choicemap:
+        # run the related function 
         choicemap[choice] ()
-    else: 
+    else: # if a wrong letter is chosen
         print("\n\n Please select either a, b, c, q!")
+    # return to the choice input
     choice = input("\nType one letter (a/b/c/q): ").strip()
