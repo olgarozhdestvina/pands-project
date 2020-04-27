@@ -71,7 +71,7 @@ Libraries used for the project are: [tabulate](https://pypi.org/project/tabulate
 ###  How to run the code
 
 1. Make sure that you have Python installed
-2. Download or clone current repository "pands-project"
+2. Download or clone the current repository "pands-project"
 3. Open Command Interpreter 
 4. Get into correct directory
 5. Run python code by typing *python analysis.py*
@@ -111,25 +111,26 @@ The choice _b_ in the menu outputs histograms on how each feature is distributed
 
 The histograms of Sepal Length and Sepal Width depict a significant overlapping in distribution. 
 
-![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Iris%20Histograms/Sepal%20Length.jpg) ![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Iris%20Histograms/Sepal%20Width.jpg)
+![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Iris%20Histograms/Sepal%20Length.png)
+![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Iris%20Histograms/Sepal%20Width.png)
 
 In contrast, the histograms of Petal Length and Petal Width show that the Setosa Petal's distribution is quite different. The least overlapping in all three species is seen in the histogrm with Petal Width; therefore it can be used as a distinguishing factor in terms of the distribution of the species.
 
-![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Iris%20Histograms/Petal%20Length.jpg) ![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Iris%20Histograms/Petal%20Width.jpg)
+![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Iris%20Histograms/Petal%20Length.png) ![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Iris%20Histograms/Petal%20Width.png)
 
 
 The choice _c_ creates scatter plots for each pair of features.
 
-![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Iris%20Scatter%20Plots/Sepal%20Length%20vs%20Sepal%20Width.jpg)
+![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Iris%20Scatter%20Plots/Sepal%20Length%20vs%20Sepal%20Width.png)
 
-![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Iris%20Scatter%20Plots/Sepal%20Length%20vs%20Petal%20Length.jpg)
+![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Iris%20Scatter%20Plots/Sepal%20Length%20vs%20Petal%20Length.png)
 
-![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Iris%20Scatter%20Plots/Sepal%20Length%20vs%20Pepal%20Width.jpg)
+![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Iris%20Scatter%20Plots/Sepal%20Length%20vs%20Pepal%20Width.png)
 
-![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Iris%20Scatter%20Plots/Sepal%20Width%20vs%20Petal%20Width.jpg)
+![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Iris%20Scatter%20Plots/Sepal%20Width%20vs%20Petal%20Width.png)
 
-![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Iris%20Scatter%20Plots/Sepal%20Width%20vs%20Petal%20Length.jpg)
-![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Iris%20Scatter%20Plots/Petal%20Length%20vs%20Petal%20Width.jpg)
+![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Iris%20Scatter%20Plots/Sepal%20Width%20vs%20Petal%20Length.png)
+![](https://raw.githubusercontent.com/olgarozhdestvina/pands-project/master/Iris%20Scatter%20Plots/Petal%20Length%20vs%20Petal%20Width.png)
 
 Analysis of all six scatter plots shows a distinct separation of Setosa from Versicolor and Virginica. It also confirms the previous statement that Setosa is the smallest of the three species (except for Sepal Width). The least overlapping in Versicolor and Virginica is depicted in the Petal Length Vs Petal Width plot.
 
