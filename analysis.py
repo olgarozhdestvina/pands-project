@@ -48,9 +48,9 @@ def irisSumm(species):
     count = species.count()                     # Computing count of group
     mean = species.mean()                       # Computing mean of groups
     median = species.median()                   # Computing median of groups
+    var = species.var()                         # Computing variance of groups
     std = species.std()                         # Computing standard deviation of groups
     mad = species.mad()                         # Returning the mean absolute deviation of the values
-    var = species.var()                         # Computing variance of groups
     max = species.max(numeric_only=True)        # Computing max of group values, leaving out the name of iris species
     min = species.min(numeric_only=True)        # Computing min of group values, leaving out the name of iris species
 
@@ -59,10 +59,10 @@ def irisSumm(species):
     [   
         ["Count", *count],                 
         ["Mean", *mean],                   
-        ["Median", *median],               
+        ["Median", *median],
+        ["Variance", *var],               
         ["Standard Deviation", *std],      
-        ["Mean Absolute Deviation", *mad], 
-        ["Variance", *var],                
+        ["Mean Absolute Deviation", *mad],   
         ["Max", *max],    
         ["Min", *min]
     ]}
